@@ -22,35 +22,21 @@
         查询
     </Button>
     <br/>
-    <div class="split">
-      <Split v-model="leftSplit">
-        <!-- <div slot="right" class="split-pane no-padding"> -->
-        <!-- <div slot="right">
-          <Split v-model="rightSplit" mode="vertical">
-            <div slot="top">
-              Top Pane
-              <Echarts class="echarts" />
-            </div>
-            <div slot="bottom">
-              Bottom Pane
-            </div>
-          </Split>
-        </div> -->
-        <div slot="left">
-          任务列表：
-          <Table :columns="columns" :data="datas" stripe border class="table" ></Table>
-          <Page ref="page"
-            :total="orgTasks.length"
-            :page-size-opts="pageSizeOpt"
-            @on-change="onChangePage"
-            @on-page-size-change="onChangePage"
-            show-sizer show-elevator show-total size="small" />
-        </div>
-        <div slot="right">
-          <Echarts />
-        </div>
-      </Split>
-    </div>
+    <Row>
+      <i-Col span="9">
+        任务列表：
+        <Table :columns="columns" :data="datas" stripe border class="table" ></Table>
+        <Page ref="page"
+          :total="orgTasks.length"
+          :page-size-opts="pageSizeOpt"
+          @on-change="onChangePage"
+          @on-page-size-change="onChangePage"
+          show-sizer show-elevator show-total size="small" />
+      </i-Col>
+      <i-Col span="11" offset="2">
+        <Echarts class="echarts" />
+      </i-Col>
+    </Row>
   </div>
 </template>
 <script>
@@ -205,31 +191,9 @@ export default {
 }
 </script>
 <style lang="scss">
-  #main {
-    width: 700px;
-    height:400px;
-    position:absolute;
-    left:100px;
-    top:150px
-  }
-  .echarts {
-    margin-bottom: 100px;
-  }
   .table {
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
-  }
-  .split{
-    margin-top: 25px;
-    height: 850px;
-    border: 1px solid #dcdee2;
-  }
-  .split-pane{
-    padding: 10px;
-  }
-  .split-pane.no-padding{
-    height: 850px;
-    padding: 0;
   }
 </style>
